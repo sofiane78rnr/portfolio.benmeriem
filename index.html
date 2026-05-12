@@ -655,26 +655,37 @@
         </div>
       </div>
 
-      <!-- CERTIFICATIONS -->
-      <div class="section-label" style="margin-top:80px;margin-bottom:12px">Certification</div>
-      <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:28px">Mes certifications</h2>
-      <div class="certif-card card reveal">
-        <div class="certif-img-wrap" id="certifImgWrap">
-          <img src="content/mooc_png.png" alt="Certification" />
-          <div class="certif-img-placeholder"><i class="ri-award-fill"></i></div>
-          <div class="certif-img-overlay"><i class="ri-zoom-in-line"></i></div>
-        </div>
-        <div class="certif-info">
-          <h3>SecNumAcadémie – ANSSI</h3>
-          <p>Certification délivrée par l'Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI). Cette formation en ligne couvre les fondamentaux de la cybersécurité : sécurité des réseaux, hygiène informatique, gestion des mots de passe et protection des données personnelles.</p>
-          <div class="certif-btns">
-            <a href="content/mooc_secunum.pdf" target="_blank" class="btn btn-primary"><i class="ri-external-link-line"></i>Voir</a>
-            <button class="btn btn-outline" id="certifDetailBtn"><i class="ri-information-line"></i>Détails</button>
-          </div>
-        </div>
-      </div>
+      <!-- CERTIFICATION 1 — SecNumAcadémie -->
+<div class="certif-card card reveal">
+  <div class="certif-img-wrap" id="certifImgWrap">
+    <div class="certif-img-placeholder"><i class="ri-award-fill"></i></div>
+    <div class="certif-img-overlay"><i class="ri-zoom-in-line"></i></div>
+  </div>
+  <div class="certif-info">
+    <h3>SecNumAcadémie – ANSSI</h3>
+    <p>Certification délivrée par l'Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI). Cette formation couvre les fondamentaux de la cybersécurité : sécurité des réseaux, hygiène informatique, gestion des mots de passe et protection des données personnelles.</p>
+    <div class="certif-btns">
+      <a href="https://secnumacademie.gouv.fr" target="_blank" class="btn btn-primary"><i class="ri-external-link-line"></i>Voir</a>
+      <button class="btn btn-outline" id="certifDetailBtn"><i class="ri-information-line"></i>Détails</button>
     </div>
-  </section>
+  </div>
+</div>
+
+<!-- CERTIFICATION 2 — Objectif IPv6 -->
+<div class="certif-card card reveal" style="margin-top: 20px;">
+  <div class="certif-img-wrap">
+    <img src="content/certif2.png" alt="Badge Objectif IPv6" />
+    <div class="certif-img-overlay"><i class="ri-zoom-in-line"></i></div>
+  </div>
+  <div class="certif-info">
+    <h3>Objectif IPv6 – Institut Mines-Télécom (IMT)</h3>
+    <p>Badge de réussite délivré par France Université Numérique (FUN) le 10 mai 2026. Formation complète sur le protocole IPv6 : fondamentaux, mise en application sur réseau local, cohabitation IPv4/v6 et intégration selon les contextes.</p>
+    <div class="certif-btns">
+      <a href="https://openbadgefactory.com/obv3/credentials/958e25205312aa2634ee97454a09e994cf47fc2d.html" target="_blank" class="btn btn-primary"><i class="ri-external-link-line"></i>Voir</a>
+      <button class="btn btn-outline" id="certif2DetailBtn"><i class="ri-information-line"></i>Détails</button>
+    </div>
+  </div>
+</div>
 
   <!-- ===== PROJETS ===== -->
   <section id="projets" class="section">
@@ -938,7 +949,7 @@
     const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          animateCount(document.getElementById('count-certif'), 1);
+          animateCount(document.getElementById('count-certif'), 2);
           animateCount(document.getElementById('count-projets'), 2);
           statsObserver.disconnect();
         }
@@ -1006,6 +1017,21 @@
         }
       }, { passive: true });
     }
+
+    // Modal certif 2
+document.getElementById('certif2DetailBtn').addEventListener('click', () => {
+  const modal = document.getElementById('certifModal');
+  modal.querySelector('h3').innerHTML = '<i class="ri-award-fill" style="color:var(--purple-glow);margin-right:10px"></i>Objectif IPv6 – IMT / FUN';
+  modal.querySelector('p').innerHTML = `
+    La formation <strong>Objectif IPv6</strong> est proposée par l'Institut Mines-Télécom via France Université Numérique.<br><br>
+    <strong>Ce que j'ai appris :</strong><br><br>
+    • L'importance d'<strong>IPv6</strong> dans l'Internet aujourd'hui<br>
+    • Les fondamentaux d'IPv6 et sa <strong>mise en application sur réseau local</strong><br>
+    • Les phénomènes liés à la <strong>cohabitation IPv4/v6</strong><br>
+    • Les étapes et solutions vers l'<strong>intégration d'IPv6</strong> selon les contextes
+  `;
+  modal.classList.add('open');
+});
   </script>
 </body>
 </html>
